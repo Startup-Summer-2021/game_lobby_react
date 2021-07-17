@@ -1,0 +1,166 @@
+$primary: #00072D;
+$red: #D64045;
+
+//Lato font
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+//color/ui color variables
+$white: hsl(0, 0%, 93%);
+$black: #333333;
+$yellow: #ffff00;
+$purple: #8a19ff;
+$colorPrimary: $yellow;
+$colorSecondary: $purple;
+
+//split button mixin
+@mixin btn__split($colorLeft, $colorRight, $textColor) {
+	.main-text {
+		position: relative;
+		letter-spacing: 0.25em;
+		margin: 0 auto;
+		padding: 1rem 2.5rem;
+		background: transparent;
+		outline: none;
+		font-size: 28px;
+		color: $textColor;
+
+		&::after,
+		&::before {
+			content: "";
+			position: absolute;
+			height: 100%;
+			width: 50%;
+			transform: skewX(30deg);
+			transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			z-index: -2;
+		}
+		&::before {
+			background-color: $colorLeft;
+			top: -1rem;
+			left: 0rem;
+		}
+		&::after {
+			background-color: $colorRight;
+			top: 1rem;
+			left: 8rem;
+		}
+		&:hover {
+			&::before,
+			&::after {
+				top: 0;
+				transform: skewx(0deg);
+			}
+			&::after {
+				left: 0rem;
+			}
+			&::before {
+				left: 8.75rem;
+			}
+		}
+	}
+}
+
+body,html, #root{
+	height: 100%;
+}
+
+body {
+	font-family: "Lato", sans-serif;
+	color: $black;
+    background-color: $primary;	
+}
+
+.main-text-container {
+	width: auto;
+	margin: auto;
+    margin-top: -50px;
+    margin-bottom: 80px;
+}
+
+a {
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+
+.button_slide {
+    color: $black;
+    background-color: $white;
+    border: 2px solid $red;
+    border-radius: 0px;
+    padding: 18px 36px;
+    display: inline-block;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 $red;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+    margin-bottom: 10px;
+}
+.slide_right:hover {
+    box-shadow: inset 400px 0 0 0 $red
+}
+
+.main-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+h1 {
+    color: $yellow;
+}
+
+
+.form__input {
+    color: $black;
+    font-size: 1.2rem;
+        margin: 0 auto;
+    padding: .7rem 1rem;
+    border-radius: 0.2rem;
+    background-color: $white;
+    border: none;
+    width: 90%;
+    display: block;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.room-page-container {
+    height: 100%;
+    display: flex;
+    //align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+
+    h1 {
+        margin-top: 70px;
+        margin-bottom: 50px;
+    }
+
+    li {
+        color: $white;
+        list-style-type: none;
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+    .host {
+        color: $red;
+    }
+}
+
+
+
+@include btn__split($colorPrimary, $colorSecondary, $black);
+
+//https://coolors.co/ffff00-8a19ff-32213a-d64045-e9fff9
